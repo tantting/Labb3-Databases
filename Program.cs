@@ -12,7 +12,5 @@ class Program
         var menue = new Menue(); 
         
         menue.StartMenue();
-        
-        
     }
 }

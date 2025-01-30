@@ -16,6 +16,7 @@ public class Menue
             Console.Clear();
             
             Console.WriteLine("Welcome to Monster High! \n" +
+                              "\n" +
                               "What would you like to do today?\n\n" +
                               "[1] Fetch info of all students\n" +
                               "[2] Fetch all students of a specific class\n" +
@@ -40,7 +41,9 @@ public class Menue
                     dataManager.AddNewStaff();
                     break; 
                 case "4":
-                    runMenu = false; 
+                    runMenu = false;
+                    Console.ReadKey();
+                    Console.WriteLine("Have a nice day!");
                     break;
                 default:
                     Console.WriteLine("Wrong input! Try again!");
@@ -48,7 +51,8 @@ public class Menue
                     break;
             }
 
-            Console.WriteLine("\nPress a key by your choice to continue");
+            Console.WriteLine("\nPress enter to continue");
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter) { };
             Console.ReadKey(); 
         }
     }
@@ -78,7 +82,8 @@ public class Menue
                     sortBy = "lastname";
                     return sortBy;
                 default:
-                    Console.WriteLine("Do not understand. Please, press enter and try again");
+                    Console.WriteLine("Wrong input! Please, press enter and try again.");
+                    while (Console.ReadKey(true).Key != ConsoleKey.Enter) { };
                     break;
             }
         }
@@ -109,7 +114,8 @@ public class Menue
                     sortByAscending = false;
                     return sortByAscending;
                 default:
-                    Console.WriteLine("Do not understand. Please, press enter and try again");
+                    Console.WriteLine("Wrong input! Please, press enter and try again.");
+                    while (Console.ReadKey(true).Key != ConsoleKey.Enter) { };
                     break;
             }
         }
@@ -138,8 +144,8 @@ public class Menue
                 case '3':
                     return "3rd"; 
                 default:
-                    Console.WriteLine("Wrong input! Press any key and try again!");
-                    Console.ReadKey();
+                    Console.WriteLine("\n\nWrong input! Please, press enter and try again.");
+                    while (Console.ReadKey(true).Key != ConsoleKey.Enter) { };
                     break;
             }
         }
