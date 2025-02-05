@@ -7,7 +7,7 @@ namespace Labb3;
 
 public class NewDataManager
 {
-    public void FetchAllStudents (string sortBy, bool sortOrder)
+    public void FetchAllStudents (string sortBy, bool sortByAscending)
     {
         using (var context = new MyDbContext())
         {
@@ -15,13 +15,13 @@ public class NewDataManager
             
             if (sortBy.ToLower() == "firstname")
             {
-                query = sortOrder
+                query = sortByAscending
                     ? context.Students.OrderBy(s => s.FirstName)
                     : context.Students.OrderByDescending(s => s.FirstName);
             }
             else if (sortBy.ToLower() == "lastname")
             {
-                query = sortOrder
+                query = sortByAscending
                     ? context.Students.OrderBy(s => s.LastName)
                     : context.Students.OrderByDescending(s => s.LastName);
             }
@@ -126,21 +126,21 @@ public class NewDataManager
             
             Console.WriteLine("Please add the required data: ");
 
-            while (firstName.Length <= 1)
+            while (firstName.Length < 2)
             {
                 Console.Write("\n1. First Name: ");
                 firstName = Console.ReadLine();
-                if (firstName.Length <= 1)
+                if (firstName.Length < 2)
                 {
                     Console.WriteLine("The name needs to have at least two letters");
                 }
             }
 
-            while (lastName.Length <= 1)
+            while (lastName.Length < 2)
             {
                 Console.Write("\n2. Last Name: ");
                 lastName = Console.ReadLine();
-                if (lastName.Length <= 1)
+                if (lastName.Length < 2)
                 {
                     Console.WriteLine("The name needs to have at least two letters");
                 }
